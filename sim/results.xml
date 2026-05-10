@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1778425603" />
+    <testcase name="test_single_write" classname="test_bridge" file="C:\Users\Saras\ahb-apb-bridge-uvm\tb\test_bridge.py" lineno="81" time="0.007462501525878906" sim_time_ns="250.0" ratio_time="33500.830670926516" />
+    <testcase name="test_single_read" classname="test_bridge" file="C:\Users\Saras\ahb-apb-bridge-uvm\tb\test_bridge.py" lineno="100" time="0.008470773696899414" sim_time_ns="459.999" ratio_time="54304.248520813984" />
+    <testcase name="test_rand_rw" classname="test_bridge" file="C:\Users\Saras\ahb-apb-bridge-uvm\tb\test_bridge.py" lineno="120" time="0.08541488647460938" sim_time_ns="5259.999" ratio_time="61581.7595398151" />
+  </testsuite>
+</testsuites>
