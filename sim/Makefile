@@ -1,16 +1,14 @@
 TOPLEVEL_LANG    = verilog
 
-# Use Windows-style paths — cocotb on Windows needs backslash-free absolute paths
-RTL_DIR  = C:/Users/Saras/ahb-apb-bridge-uvm/rtl
-TB_DIR   = C:/Users/Saras/ahb-apb-bridge-uvm/tb
-
-VERILOG_SOURCES  = $(RTL_DIR)/ahb_apb_bridge.sv $(TB_DIR)/tb_top.sv
+# $(CURDIR) = absolute path of sim/ directory — works on both Windows and Linux
+VERILOG_SOURCES  = $(CURDIR)/../rtl/ahb_apb_bridge.sv \
+                   $(CURDIR)/../tb/tb_top.sv
 TOPLEVEL         = tb_top
 COCOTB_TEST_MODULES = test_bridge
 COCOTB_HDL_TIMEUNIT      = 1ns
 COCOTB_HDL_TIMEPRECISION = 1ps
 
-export PYTHONPATH := $(TB_DIR)
+export PYTHONPATH := $(CURDIR)/../tb
 
 SIM ?= icarus
 
