@@ -1,0 +1,6 @@
+sim/sim_build/
+sim/results.xml
+sim/waves.vcd
+tb/__pycache__/
+__pycache__/
+*.pyc
