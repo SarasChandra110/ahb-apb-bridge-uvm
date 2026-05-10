@@ -87,11 +87,11 @@ constrained randomization since the RTL doesn't support sub-word accesses.
 ## Running the simulation
 
 ```bash
-# QuestaSim
-vsim -do sim/run.do
+# Questa/ModelSim (native SV UVM testbench)
+vsim -do sim/run_questa.do
 
-# or with Makefile (requires UVM 1.2 + QuestaSim/VCS)
-cd sim && make run
+# cocotb + Icarus Verilog (open source, CI-verified)
+cd sim && make SIM=icarus
 ```
 
 ---
@@ -101,19 +101,23 @@ cd sim && make run
 ```
 ahb-apb-bridge-uvm/
 ├── rtl/
-│   └── ahb_apb_bridge.sv       -- bridge RTL
+│   └── ahb_apb_bridge.sv         -- bridge RTL (iverilog + Questa compatible)
 ├── tb/
 │   ├── agents/
-│   │   ├── ahb_seq_item.sv     -- AHB transaction object
-│   │   ├── ahb_driver.sv       -- AHB master driver
-│   │   └── ahb_monitor.sv      -- passive AHB observer
+│   │   ├── ahb_seq_item.sv       -- AHB transaction object
+│   │   ├── ahb_driver.sv         -- AHB master driver
+│   │   └── ahb_monitor.sv        -- passive AHB observer
 │   ├── env/
-│   │   ├── ahb_apb_scoreboard.sv  -- checker
+│   │   ├── ahb_apb_scoreboard.sv -- checker
 │   │   └── ahb_apb_coverage.sv   -- cover groups
-│   └── tests/
-│       └── rand_test.sv        -- 500-txn constrained random test
+│   ├── tests/
+│   │   └── rand_test.sv          -- 500-txn constrained random test
+│   ├── test_bridge.py            -- cocotb testbench (3 tests, CI-verified)
+│   ├── tb_top.sv                 -- cocotb simulation top
+│   └── tb_top_questa.sv          -- Questa/UVM simulation top
 └── sim/
-    └── run.do                  -- QuestaSim run script
+    ├── Makefile                  -- cocotb runner (make SIM=icarus)
+    └── run_questa.do             -- Questa compile + run script
 ```
 
 ---
